@@ -12,6 +12,7 @@ const configCors = {
 let valor = "oi" // criar uma variável na memória do servidor para enviar como resposta pro cliente :)
 
 
+
  // framework.metodoGET.('rota', configurações-opcionais, função de request-response) => é o que significa a linha a baixo
 app.get("/", cors(configCors), (req, res) => {
     valor = valor + "i" // toda vez que chegar uma requisição nessa rota vamos melhorar o nivel de animação do nosso 'oi'
