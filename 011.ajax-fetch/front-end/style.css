@@ -1,0 +1,17 @@
+body{
+    margin: 30px auto;
+    width: 700px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+section, table{
+    width: 800px;
+}
+
+td{
+    width: 200px;
+}

@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Consulta por ID</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+  
+    <body>
+        <section>
+            <label for="id">ID</label><input type="number" id="id">
+            <!-- <label for="name">Nome</label><input type="text" id="name">
+            <label for="email">Email</label><input type="text" id="email"> -->
+
+            <button onclick="getClient()">Consultar</button>
+        </section>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+            </thead>
+            <tbody id="response">
+
+            </tbody>
+        </table>
+    </body>
+  
+    <script src="script.js"></script>
+    </html>
