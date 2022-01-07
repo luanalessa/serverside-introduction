@@ -7,10 +7,6 @@
 
 </br>
 
-## Servidor de texto
-
-Aqui é um exemplo simples de como usar o express para servir um valor da memória do servidor para o front como resposta a cada requisição. Cada vez que recebe uma requisição, o back adiciona um "i" à palavra "oi".
-
 ## Como rodar o servidor
 
 Clone o repositório:
