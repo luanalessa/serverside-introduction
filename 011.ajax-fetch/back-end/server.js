@@ -1,11 +1,10 @@
 const express = require('express');
 const cors = require("cors");
-
 const app = express();
 
 const configCors = {
-    origin: false
-};
+    origin: "http://127.0.0.1:5500"
+}
 
 app.use(cors(configCors));
 
@@ -27,15 +26,18 @@ const clients = [
     }
 ];
 
-app.get('/',  (req, res) => {
+app.get('/', (req, res) => {
     res.send(clients);
-});
-
-app.get('/:id',  (req, res) => {
-    const id = req.params.id;
-    clients.map((client) => {
-        if(client.id == id) res.send(client);
-    })
-
 })
+
+app.get('/:id', (req, res) => {
+    const idClient = req.params.id;
+
+    clients.map( function (client) {
+        if(client.id == idClient ){
+            res.send(client);
+        }
+    })
+})
+
 app.listen(8080);

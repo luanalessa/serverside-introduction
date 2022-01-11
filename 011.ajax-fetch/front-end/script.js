@@ -1,52 +1,46 @@
-const serverAddress = "http://localhost:8080/"  
-const htmlResponse = document.getElementById('response');
+const serverAddress = "http://localhost:8080/"
 
-const handleRequest = () => {
-    fetch(serverAddress)
-        .then(response => response.text())
-        .then(data => {
-            const clients = JSON.parse(data);
-            console.log(clients);
-            clients.map( client => {
-                htmlResponse.innerHTML += `<tr><td>${client.id}</td>`
-                                        + `<td>${client.name}</td>`
-                                        + `<td>${client.email}</td></tr>`
-            })
-        })
-        .catch(err => console.log(err))
-}
+const htmlResponse = document.getElementById("response");
 
+function getClient() {
+    const id = document.getElementById("id").value;
 
-const getClient = () => {
-    const id = document.getElementById('id').value;
-
-    fetch(serverAddress + `${id}`)
-        .then( resposta => resposta.text())
+    fetch(serverAddress + id)
+        .then( response =>  response.text())
         .then( data => {
-            const client = JSON.parse(data);
-            console.log(client)
-            htmlResponse.innerHTML = `<tr><td>${client.id}</td>`
-                                        + `<td>${client.name}</td>`
-                                        + `<td>${client.email}</td></tr>`
+            const client = JSON.parse(data)
+            htmlResponse.innerHTML = `<tr><td>${client.id}</td><td>${client.name}</td><td>${client.email}</td></tr>`
         })
-        .catch(err => console.log(err))
+        .catch( err => console.log(err))
 }
 
-// const handleRequest = () => {
-//     const xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             const clients = JSON.parse(this.responseText)
-//             clients.map( client => {
-//                 htmlResponse.innerHTML += `<tr><td>${client.id}</td>`
-//                                         + `<td>${client.name}</td>`
-//                                         + `<td>${client.email}</td></tr>`
-//             })
 
+function handleRequest(){
+    fetch(serverAddress)
+    .then( response => response.text())
+    .then( data => {
+        const clients = JSON.parse(data)
+        clients.map(client => {
+            htmlResponse.innerHTML += `<tr><td>${client.id}</td><td>${client.name}</td><td>${client.email}</td></tr>`
+        })
+    })
+    .catch( err => console.log(err))
+
+}
+
+// function getClient(){
+//         const id = document.getElementById("id").value;
+
+//         const xhttp = new XMLHttpRequest();
+//         xhttp.onreadystatechange = function(){
+//             if( this.readyState == 4 && this.status == 200){
+//                 const client = JSON.parse(this.responseText)
+//                 htmlResponse.innerHTML = `<tr><td>${client.id}</td><td>${client.name}</td><td>${client.email}</td></tr>`
+//             }
 //         }
-//     }
-//     xhttp.open("GET", serverAddress, true); 
-//     xhttp.send();
+
+//         xhttp.open("GET", serverAddress + id, true);
+//         xhttp.send();
 // }
 
 window.onload = handleRequest();

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form class="signup">
+        <input type="email" name="email" id="email" placeholder="Email"/>
+        <input type="password" name="password" id="password" placeholder="Password"/>
+        <input type="button" name="send" id="btn-send" value="Register" onclick="registerUser()" />
+    </form>
+
+    <input type="button" name="mostrar" id="btn-mostrar" value="Show" onclick="getUsers()"/>
+
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>Email</th>
+        </thead>
+        <tbody id="response">
+
+        </tbody>
+    </table>
+</body>
+<script type="text/javascript" src="script.js"></script>
+</html>
