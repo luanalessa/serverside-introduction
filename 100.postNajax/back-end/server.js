@@ -6,11 +6,7 @@ const app = express();
 app.use(express.urlencoded({extended: true})); //  reconhece o objeto de solicitação (la do lado do cliente) como strings ou matrizes.
 app.use(express.json());  //  reconhece o objeto de solicitação (la do lado do cliente) como um objeto JSON.
 
-const configCors = {
-    origin: "http://127.0.0.1:5500"
-}
-
-app.use(cors(configCors));
+app.use(cors());
 
 let users = [
     { 
@@ -36,6 +32,8 @@ app.get('/', (req, res) => {
 
 app.post('/register', (req, res) => {
     const email = req.body.email; // BODY: converte o body da requisição para vários formatos
+    // Aqui estamos acessando o valor da chave "email" do objeto body e atribuindo à const email que criamos
+    
     const password = req.body.password;
 
     const checkUser = users.filter((user) => {
@@ -46,9 +44,10 @@ app.post('/register', (req, res) => {
 
     if(checkUser.length == 0){
         users.push({id : users.length + 1, email : email, password : password})
-        res.sendStatus(200);
+        res.sendStatus(201); // respondemos com o status de 201, que indica que um recurso foi criado com sucesso no servidor. 
+        console.log(users);  // veja que o usuário foi criado na memória do servidor
     }else{
-        res.sendStatus(400)
+        res.sendStatus(400); // caso o usuário já exista, respondemos com o status 400 (bad request), "colocando a culpa" do erro em quem fez a requisição.
     }
 
 })
